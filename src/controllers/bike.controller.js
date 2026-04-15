@@ -13,14 +13,14 @@ exports.getBikes = async (req, res, next) => {
     if (status)   filter.status   = status;
     if (location) filter.location = new RegExp(location, 'i');
     if (min_price || max_price) {
-      filter.price_per_hour = {};
-      if (min_price) filter.price_per_hour.$gte = Number(min_price);
-      if (max_price) filter.price_per_hour.$lte = Number(max_price);
+      filter.price_per_day = {};
+      if (min_price) filter.price_per_day.$gte = Number(min_price);
+      if (max_price) filter.price_per_day.$lte = Number(max_price);
     }
 
     const sortMap = {
-      price_asc:    { price_per_hour: 1 },
-      price_desc:   { price_per_hour: -1 },
+      price_asc:    { price_per_day: 1 },
+      price_desc:   { price_per_day: -1 },
       rating_desc:  { avg_rating: -1 },
       newest:       { createdAt: -1 },
     };

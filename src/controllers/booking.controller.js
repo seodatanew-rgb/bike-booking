@@ -153,7 +153,7 @@ exports.getMyBookings = async (req, res, next) => {
     const skip  = (Number(page) - 1) * Number(limit);
     const total = await Booking.countDocuments(filter);
     const bookings = await Booking.find(filter)
-      .populate('bike_id', 'name brand type images price_per_hour')
+      .populate('bike_id', 'name brand type images price_per_day')
       .populate('promo_id', 'code discount_type discount_value')
       .sort({ createdAt: -1 })
       .skip(skip)

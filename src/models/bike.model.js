@@ -23,9 +23,9 @@ const bikeSchema = new mongoose.Schema(
       maxlength: [500, 'Description cannot exceed 500 characters'],
     },
     price_per_hour: {
-      type:     Number,
-      required: [true, 'Price per hour is required'],
-      min:      [0, 'Price cannot be negative'],
+      type:    Number,
+      default: 0,
+      min:     [0, 'Price cannot be negative'],
     },
     price_per_day: {
       type:     Number,
@@ -67,6 +67,6 @@ const bikeSchema = new mongoose.Schema(
 
 // Index for search/filter queries
 bikeSchema.index({ type: 1, status: 1, location: 1 });
-bikeSchema.index({ price_per_hour: 1 });
+bikeSchema.index({ price_per_day: 1 });
 
 module.exports = mongoose.model('Bike', bikeSchema);
